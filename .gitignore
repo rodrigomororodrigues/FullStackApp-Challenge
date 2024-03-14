@@ -1,7 +1,69 @@
-bin
-obj
-.vscode
+# Standard ignore for .NET and Visual Studio
+bin/
+obj/
+*.user
+*.userosscache
+*.suo
+*.userprefs
+*.ds_store
+*.dbmdl
+*.jfm
+**/*.dbmdl
+*.*proj.user
+*.log
+
+# VS Code
+.vscode/
+
+# macOS system files
 .DS_Store
+
+# Application settings with sensitive information
 appsettings.json
+appsettings.*.json
+
+# Database files
 *.db
-wwwroot
+
+# Docker
+docker-compose*.yml
+Dockerfile*
+.dockerignore
+
+# Node.js
+node_modules/
+npm-debug.log
+
+# Azure Dev Spaces
+azds.yaml
+
+# Helm charts directory (if not meant to be shared)
+/charts
+
+# Secrets
+secrets.dev.yaml
+values.dev.yaml
+
+# Misc
+LICENSE
+
+
+# Java specific (if you're not using Java, these can be removed)
+.classpath
+.project
+.settings/
+
+
+# Terraform
+**/.terraform/*
+*.tfstate
+*.tfstate.*.backup
+*.tfstate.backup
+*.tfvars
+*.tfplan
+terraform.tfstate.d/
+
+# Exclude executable and large files that don't need to be version controlled
+**/*.exe
+**/*.dll
+**/*.zip
