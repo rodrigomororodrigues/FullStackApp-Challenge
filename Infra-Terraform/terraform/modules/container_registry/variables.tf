@@ -22,7 +22,8 @@ variable "admin_enabled" {
 variable "sku" {
   description = "(Optional) The SKU name of the container registry. Possible values are Basic, Standard and Premium. Defaults to Basic"
   type        = string
-  default     = "Basic"
+  default     = "Premium" 
+
 
   validation {
     condition = contains(["Basic", "Standard", "Premium"], var.sku)

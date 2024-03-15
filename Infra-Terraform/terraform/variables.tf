@@ -166,7 +166,7 @@ variable "kubernetes_version" {
 
   variable "system_node_pool_vm_size" {
     description = "Specifies the vm size of the system node pool"
-    default     = "Standard_DS2_v3" 
+    default     = "Standard_d4a_v4" 
     type        = string
   }
 
@@ -221,7 +221,7 @@ variable "system_node_pool_enable_node_public_ip" {
 variable "system_node_pool_max_pods" {
   description = "(Optional) The maximum number of pods that can run on each agent. Changing this forces a new resource to be created."
   type          = number
-  default       = 1
+  default       = 50
 }
 
 variable "system_node_pool_node_labels" {
@@ -251,13 +251,13 @@ variable "system_node_pool_max_count" {
 variable "system_node_pool_min_count" {
   description = "(Required) The minimum number of nodes which should exist within this Node Pool. Valid values are between 0 and 1000 and must be less than or equal to max_count."
   type          = number
-  default       = 3
+  default       = 1
 }
 
 variable "system_node_pool_node_count" {
   description = "(Optional) The initial number of nodes which should exist within this Node Pool. Valid values are between 0 and 1000 and must be a value in the range min_count - max_count."
   type          = number
-  default       = 3
+  default       = 1
 }
 
 variable "user_node_pool_name" {
@@ -269,13 +269,13 @@ variable "user_node_pool_name" {
 variable "user_node_pool_vm_size" {
   description = "(Required) The SKU which should be used for the Virtual Machines used in this Node Pool. Changing this forces a new resource to be created."
   type        = string
-  default     = "Standard_D2s_v3"
+  default     = "Standard_d4a_v4"
 }
 
 variable "user_node_pool_availability_zones" {
   description = "(Optional) A list of Availability Zones where the Nodes in this Node Pool should be created in. Changing this forces a new resource to be created."
   type        = list(string)
-  default = ["1",]
+  default = ["1"]
 }
 
 variable "user_node_pool_enable_auto_scaling" {
@@ -299,7 +299,7 @@ variable "user_node_pool_enable_node_public_ip" {
 variable "user_node_pool_max_pods" {
   description = "(Optional) The maximum number of pods that can run on each agent. Changing this forces a new resource to be created."
   type          = number
-  default       = 1
+  default       = 50
 }
 
 variable "user_node_pool_mode" {
@@ -341,7 +341,7 @@ variable "user_node_pool_priority" {
 variable "user_node_pool_max_count" {
   description = "(Required) The maximum number of nodes which should exist within this Node Pool. Valid values are between 0 and 1000 and must be greater than or equal to min_count."
   type          = number
-  default       = 1
+  default       = 2
 }
 
 variable "user_node_pool_min_count" {
@@ -376,7 +376,7 @@ variable "vm_public_ip" {
 
 variable "vm_size" {
   description = "Specifies the size of the jumpbox virtual machine"
-  default     = "Standard_DS1_v2"
+  default     = "Standard_d4a_v4"
   type        = string
 }
 
@@ -433,7 +433,7 @@ variable "acr_name" {
 variable "acr_sku" {
   description = "Specifies the name of the container registry"
   type        = string
-  default     = "Basic"
+  default     = "Premium"
 
   validation {
     condition = contains(["Basic", "Standard", "Premium"], var.acr_sku)

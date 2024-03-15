@@ -61,7 +61,7 @@ variable "automatic_channel_upgrade" {
 variable "sku_tier" {
   description = "(Optional) The SKU Tier that should be used for this Kubernetes Cluster. Possible values are Free and Paid (which includes the Uptime SLA). Defaults to Free."
   #default     = "Free"
-  default     = "Standard"
+  default     = "standard"
   type        = string
 
   validation {
@@ -78,13 +78,13 @@ variable "kubernetes_version" {
 
 variable "system_node_pool_vm_size" {
   description = "Specifies the vm size of the system node pool"
-  default     = "Standard_DS2_v3"
+  default     = "Standard_d4a_v4"
   type        = string
 }
 
 variable "system_node_pool_availability_zones" {
   description = "Specifies the availability zones of the system node pool"
-  default     = ["1", "2", "3"]
+  default     = ["1"]
   type        = list(string)
 }
 
@@ -180,19 +180,19 @@ variable "system_node_pool_os_disk_type" {
 variable "system_node_pool_max_count" {
   description = "(Required) The maximum number of nodes which should exist within this Node Pool. Valid values are between 0 and 1000 and must be greater than or equal to min_count."
   type          = number
-  default       = 10
+  default       = 1
 }
 
 variable "system_node_pool_min_count" {
   description = "(Required) The minimum number of nodes which should exist within this Node Pool. Valid values are between 0 and 1000 and must be less than or equal to max_count."
   type          = number
-  default       = 3
+  default       = 1
 }
 
 variable "system_node_pool_node_count" {
   description = "(Optional) The initial number of nodes which should exist within this Node Pool. Valid values are between 0 and 1000 and must be a value in the range min_count - max_count."
   type          = number
-  default       = 3
+  default       = 1
 }
 
 variable "log_analytics_workspace_id" {
