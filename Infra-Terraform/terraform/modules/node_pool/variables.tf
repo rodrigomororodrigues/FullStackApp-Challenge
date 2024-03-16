@@ -16,7 +16,7 @@ variable "vm_size" {
 variable "availability_zones" {
   description = "(Optional) A list of Availability Zones where the Nodes in this Node Pool should be created in. Changing this forces a new resource to be created."
   type        = list(string)
-  default = ["1", "2", "3"]
+  default = ["1",]
 }
 
 variable "enable_auto_scaling" {
@@ -40,7 +40,7 @@ variable "enable_node_public_ip" {
 variable "max_pods" {
   description = "(Optional) The maximum number of pods that can run on each agent. Changing this forces a new resource to be created."
   type          = number
-  default       = 250
+  default       = 50
 }
 
 variable "mode" {
@@ -81,7 +81,7 @@ variable "os_disk_size_gb" {
 variable "os_disk_type" {
   description = "(Optional) The type of disk which should be used for the Operating System. Possible values are Ephemeral and Managed. Defaults to Managed. Changing this forces a new resource to be created."
   type          = string
-  default       = "Ephemeral"
+  default       = "Managed"
 } 
 
 variable "os_type" {
@@ -117,19 +117,19 @@ variable "pod_subnet_id" {
 variable "max_count" {
   description = "(Required) The maximum number of nodes which should exist within this Node Pool. Valid values are between 0 and 1000 and must be greater than or equal to min_count."
   type          = number
-  default       = 10
+  default       = 1
 }
 
 variable "min_count" {
   description = "(Required) The minimum number of nodes which should exist within this Node Pool. Valid values are between 0 and 1000 and must be less than or equal to max_count."
   type          = number
-  default       = 3
+  default       = 1
 }
 
 variable "node_count" {
   description = "(Optional) The initial number of nodes which should exist within this Node Pool. Valid values are between 0 and 1000 and must be a value in the range min_count - max_count."
   type          = number
-  default       = 3
+  default       = 1
 }
 
 variable resource_group_name {

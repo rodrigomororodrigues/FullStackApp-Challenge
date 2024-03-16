@@ -166,7 +166,7 @@ variable "kubernetes_version" {
 
   variable "system_node_pool_vm_size" {
     description = "Specifies the vm size of the system node pool"
-    default     = "Standard_d4a_v4" 
+    default     = "Standard_B2ms" 
     type        = string
   }
 
@@ -239,7 +239,7 @@ variable "system_node_pool_node_taints" {
 variable "system_node_pool_os_disk_type" {
   description = "(Optional) The type of disk which should be used for the Operating System. Possible values are Ephemeral and Managed. Defaults to Managed. Changing this forces a new resource to be created."
   type          = string
-  default       = "Ephemeral"
+  default       = "Managed"
 } 
 
 variable "system_node_pool_max_count" {
@@ -269,7 +269,7 @@ variable "user_node_pool_name" {
 variable "user_node_pool_vm_size" {
   description = "(Required) The SKU which should be used for the Virtual Machines used in this Node Pool. Changing this forces a new resource to be created."
   type        = string
-  default     = "Standard_d4a_v4"
+  default     = "Standard_B2ms"
 }
 
 variable "user_node_pool_availability_zones" {
@@ -323,7 +323,7 @@ variable "user_node_pool_node_taints" {
 variable "user_node_pool_os_disk_type" {
   description = "(Optional) The type of disk which should be used for the Operating System. Possible values are Ephemeral and Managed. Defaults to Managed. Changing this forces a new resource to be created."
   type          = string
-  default       = "Ephemeral"
+  default       = "Managed" 
 } 
 
 variable "user_node_pool_os_type" {
@@ -376,7 +376,7 @@ variable "vm_public_ip" {
 
 variable "vm_size" {
   description = "Specifies the size of the jumpbox virtual machine"
-  default     = "Standard_d4a_v4"
+  default     = "Standard_B2ms"
   type        = string
 }
 

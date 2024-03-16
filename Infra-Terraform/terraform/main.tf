@@ -360,19 +360,6 @@ module "blob_private_dns_zone" {
   }
 }
 
-#module "api_private_endpoint" {
-#  source                         = "./modules/private_endpoint"
-#  name                           = "${module.api.name}PrivateEndpoint"
-#  location                       = var.location
-#  resource_group_name            = azurerm_resource_group.rg.name
-#  subnet_id                      = module.virtual_network.subnet_ids[var.vm_subnet_name]
-#  tags                           = var.tags
-#  private_connection_resource_id = module.api.id
-#  is_manual_connection           = false
-#  subresource_name               = "account"
-#  private_dns_zone_group_name    = "AcrPrivateDnsZoneGroup"
-#  private_dns_zone_group_ids     = [module.api_private_dns_zone.id]
-#}
 
 module "acr_private_endpoint" {
   source                         = "./modules/private_endpoint"

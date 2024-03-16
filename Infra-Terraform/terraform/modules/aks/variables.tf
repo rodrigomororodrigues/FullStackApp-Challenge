@@ -78,7 +78,7 @@ variable "kubernetes_version" {
 
 variable "system_node_pool_vm_size" {
   description = "Specifies the vm size of the system node pool"
-  default     = "Standard_d4a_v4"
+  default     = "Standard_B2ms"
   type        = string
 }
 
