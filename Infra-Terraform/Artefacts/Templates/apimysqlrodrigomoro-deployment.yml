@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apimysqlrodrigomoro
+  namespace: apimysqlapplication
+  labels:
+    app: apimysqlrodrigomoro
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: apimysqlrodrigomoro
+  template:
+    metadata:
+      labels:
+        app: apimysqlrodrigomoro
+    spec:
+      containers:
+      - name: dotnetcore-api-container
+        image: docker.io/rodrigomoro/apimysqlrodrigomoro:v13 # Replace with your actual image
+        ports:
+        - containerPort: 5000
+        - containerPort: 80  # Adjusted to match the application's listening port
+        env:
+          - name: DBHOST
+            value: "database.apimysqlapplication.svc.cluster.local" # Adjust based on your MySQL service name and namespace
+          - name: ASPNETCORE_ENVIRONMENT
+            value: "Development"
+          - name: MYSQL_DATABASE
+            value: "productsdb"
+          - name: MYSQL_USER
+            valueFrom:
+              secretKeyRef:
+                name: mysql-secrets-appuser-mysqlapirodrigomoro
+                key: mysql-user
+          - name: MYSQL_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mysql-secrets-appuser-mysqlapirodrigomoro
+                key: mysql-password
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "250m" # 250 millicpu, or 0.25 CPU cores
+          limits:
+            memory: "1Gi"
+            cpu: "500m" # 500 millicpu, or 0.5 CPU cores
