@@ -19,15 +19,15 @@ obj/
 .DS_Store
 
 # Application settings with sensitive information
-appsettings.json
-appsettings.*.json
+#appsettings.json
+#appsettings.*.json
 
 # Database files
 *.db
 
 # Docker
-docker-compose*.yml
-Dockerfile*
+#docker-compose*.yml
+#Dockerfile*
 .dockerignore
 
 # Node.js
@@ -38,11 +38,11 @@ npm-debug.log
 azds.yaml
 
 # Helm charts directory (if not meant to be shared)
-/charts
+#/charts
 
 # Secrets
-secrets.dev.yaml
-values.dev.yaml
+#secrets.dev.yaml
+#values.dev.yaml
 
 # Misc
 LICENSE
