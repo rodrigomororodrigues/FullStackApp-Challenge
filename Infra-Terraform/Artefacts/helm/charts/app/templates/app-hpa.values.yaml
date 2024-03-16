@@ -1,0 +1,10 @@
+hpa:
+  name: apimysqlrodrigomoro-hpa
+  namespace: apimysqlapplication
+  deploymentName: apimysqlrodrigomoro
+  minReplicas: 2
+  maxReplicas: 10
+  targetCPUUtilization: 50
+
+
+#helm install myapp-release ./myapp --set hpa.minReplicas=2,hpa.maxReplicas=10

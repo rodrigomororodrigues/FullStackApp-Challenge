@@ -1,0 +1,25 @@
+apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: {{ .Values.mysql.hpa.name }}
+  namespace: {{ .Values.mysql.namespace }}
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: {{ .Values.mysql.deploymentName }}
+  minReplicas: {{ .Values.mysql.hpa.minReplicas }}
+  maxReplicas: {{ .Values.mysql.hpa.maxReplicas }}
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: {{ .Values.mysql.hpa.targetCPUUtilization }}
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: {{ .Values.mysql.hpa.targetMemoryUtilization }}

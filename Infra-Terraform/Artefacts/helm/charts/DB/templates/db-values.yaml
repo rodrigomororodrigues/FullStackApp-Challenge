@@ -30,3 +30,8 @@ mysql:
       name: mysql-secrets-appuser-mysqlapirodrigomoro
     root:
       name: mysql-secrets-root-mysqlapirodrigomoro
+
+
+
+#helm install mydb-release ./mychart
+#helm install mydb-release ./mychart --set mysql.hpa.minReplicas=1,mysql.hpa.maxReplicas=5

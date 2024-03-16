@@ -1,0 +1,9 @@
+mysql:
+  namespace: apimysqlapplication
+  deploymentName: mysql-application-deployment
+  hpa:
+    name: mysql-application-hpa
+    minReplicas: 1
+    maxReplicas: 5
+    targetCPUUtilization: 80
+    targetMemoryUtilization: 80
