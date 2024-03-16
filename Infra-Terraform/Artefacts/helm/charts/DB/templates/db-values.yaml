@@ -1,0 +1,32 @@
+namespace: apimysqlapplication
+
+app:
+  name: apimysqlrodrigomoro
+  replicas: 1
+  container:
+    name: dotnetcore-api-container
+    image: docker.io/rodrigomoro/apimysqlrodrigomoro:v13
+    ports:
+      mysql: 3306
+    resources:
+      requests:
+        memory: "512Mi"
+        cpu: "250m"
+      limits:
+        memory: "1Gi"
+        cpu: "500m"
+  service:
+    name: apimysqlrodrigomoro-service
+    port: 80
+    targetPort: 5000
+    type: ClusterIP
+
+mysql:
+  storageClassName: storage-class-mysqlapirodrigomoro
+  pvc:
+    name: pvc-mysqlapirodrigomoro
+  secrets:
+    user:
+      name: mysql-secrets-appuser-mysqlapirodrigomoro
+    root:
+      name: mysql-secrets-root-mysqlapirodrigomoro

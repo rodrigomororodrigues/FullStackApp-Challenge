@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.deployment.name }}
+  namespace: {{ .Values.deployment.namespace }}
+  labels:
+    app: {{ .Values.deployment.label }}
+spec:
+  replicas: {{ .Values.deployment.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.deployment.label }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.deployment.label }}
+    spec:
+      containers:
+      - name: {{ .Values.container.name }}
+        image: {{ .Values.container.image }}
+        ports:
+        - containerPort: {{ .Values.container.ports.api }}
+        - containerPort: {{ .Values.container.ports.http }}
+        env:
+        - name: DBHOST
+          value: {{ .Values.env.DBHOST }}
+        - name: ASPNETCORE_ENVIRONMENT
+          value: {{ .Values.env.ASPNETCORE_ENVIRONMENT }}
+        - name: MYSQL_DATABASE
+          value: {{ .Values.env.MYSQL_DATABASE }}
+        - name: MYSQL_USER
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Values.secrets.user.name }}
+              key: {{ .Values.secrets.user.key }}
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Values.secrets.password.name }}
+              key: {{ .Values.secrets.password.key }}
+        resources:
+          requests:
+            memory: {{ .Values.resources.requests.memory }}
+            cpu: {{ .Values.resources.requests.cpu }}
+          limits:
+            memory: {{ .Values.resources.limits.memory }}
+            cpu: {{ .Values.resources.limits.cpu }}

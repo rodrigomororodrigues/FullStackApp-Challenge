@@ -1,0 +1,17 @@
+namespace: apimysqlapplication
+mysql:
+  storageClassName: storage-class-mysqlapirodrigomoro
+  pvc:
+    name: pvc-mysqlapirodrigomoro
+    accessMode: ReadWriteOnce
+    storage: 10Gi
+  image: docker.io/rodrigomoro/mysqlapirodrigomoro:v13
+  ports:
+    mysql: 3306
+  resources:
+    requests:
+      memory: "512Mi"
+      cpu: "250m"
+    limits:
+      memory: "1Gi"
+      cpu: "500m"

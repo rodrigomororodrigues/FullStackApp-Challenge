@@ -1,0 +1,33 @@
+deployment:
+  name: apimysqlrodrigomoro
+  namespace: apimysqlapplication
+  label: apimysqlrodrigomoro
+  replicas: 3
+
+container:
+  name: dotnetcore-api-container
+  image: docker.io/rodrigomoro/apimysqlrodrigomoro:v13
+  ports:
+    api: 5000
+    http: 80
+
+env:
+  DBHOST: "database.apimysqlapplication.svc.cluster.local"
+  ASPNETCORE_ENVIRONMENT: "Development"
+  MYSQL_DATABASE: "productsdb"
+
+secrets:
+  user:
+    name: mysql-secrets-appuser-mysqlapirodrigomoro
+    key: mysql-user
+  password:
+    name: mysql-secrets-appuser-mysqlapirodrigomoro
+    key: mysql-password
+
+resources:
+  requests:
+    memory: "100Mi"
+    cpu: "100m"
+  limits:
+    memory: "256Mi"
+    cpu: "250m"
